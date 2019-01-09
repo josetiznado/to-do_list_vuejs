@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>To-do with Vuejs</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="row">
+        <div class="col-md-12"><h3>My To-do List with VueJS</h3></div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <input
+            v-model="newItem"
+            v-on:keyup.enter="addItem"
+            placeholder="add something"
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <div class="col-md-3">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-primary" v-on:click="addItem">
+              Add!
+            </button>
+          </span>
+        </div>
+      </div>
+      <h4>{{ title }}</h4>
+      <ul>
+        <li
+          v-for="item in items"
+          v-bind:class="{ 'removed':
+                        item.checked }"
+        >
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" v-model="item.checked" /> {{ item.text }}
+            </label>
+          </div>
+        </li>
+      </ul>
+      <div class="footer"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
